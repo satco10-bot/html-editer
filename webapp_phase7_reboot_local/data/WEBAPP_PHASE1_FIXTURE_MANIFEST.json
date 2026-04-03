@@ -1,0 +1,181 @@
+{
+  "manifest_version": "phase1-2026-04-02",
+  "project_goal": "HTML 상세페이지를 로컬-퍼스트 웹앱에서 미리캔버스/피그마급 사용성으로 편집하고, linked HTML / embedded HTML / 전체 PNG / 분할 PNG로 안정적으로 저장한다.",
+  "fixture_freeze_policy": {
+    "baseline_version": "v1",
+    "rules": [
+      "Fixture HTML은 원본을 보존한다. 슬롯 테스트를 위해 HTML 본문을 임의로 수정하지 않는다.",
+      "새 fixture를 추가할 때는 manifest와 acceptance matrix를 함께 갱신한다.",
+      "기존 fixture를 변경할 때는 변경 이유, 영향 범위, 예상 슬롯 수 변경 여부를 changelog에 기록한다."
+    ]
+  },
+  "fixtures": [
+    {
+      "id": "F01",
+      "name": "blank_builder_860",
+      "file": "fixtures/fixture_01_blank_builder_860.html",
+      "source_type": "internal_sample",
+      "category": "explicit_slots_template",
+      "priority": "P0",
+      "page_width_px": 860,
+      "slot_contract": {
+        "detection_mode": "explicit",
+        "required_exact_count": 3,
+        "required_selectors": [
+          "[data-image-slot='hero-main']",
+          "[data-image-slot='detail-slot-1']",
+          "[data-image-slot='detail-slot-2']"
+        ],
+        "false_positive_budget_max": 0
+      },
+      "asset_contract": {
+        "existing_img_count": 0,
+        "custom_scheme_required": false,
+        "background_image_required": false
+      },
+      "save_export_contract": {
+        "linked_html_required": true,
+        "embedded_html_required": true,
+        "full_png_required": true,
+        "segmented_png_required": true
+      },
+      "notes": "가장 단순한 860px 기준 빌더. explicit data-image-slot이 깨지지 않는지 확인하는 기준 fixture."
+    },
+    {
+      "id": "F02",
+      "name": "sample_shop_builder_860",
+      "file": "fixtures/fixture_02_sample_shop_builder_860.html",
+      "source_type": "internal_sample",
+      "category": "explicit_slots_long_detail",
+      "priority": "P0",
+      "page_width_px": 860,
+      "slot_contract": {
+        "detection_mode": "explicit",
+        "required_exact_count": 6,
+        "required_selectors": [
+          "[data-image-slot='hero-main']",
+          "[data-image-slot='fit-main']",
+          "[data-image-slot='fit-sub-1']",
+          "[data-image-slot='fit-sub-2']",
+          "[data-image-slot='detail-long-1']",
+          "[data-image-slot='detail-long-2']"
+        ],
+        "false_positive_budget_max": 0
+      },
+      "asset_contract": {
+        "existing_img_count": 0,
+        "custom_scheme_required": false,
+        "background_image_required": false
+      },
+      "save_export_contract": {
+        "linked_html_required": true,
+        "embedded_html_required": true,
+        "full_png_required": true,
+        "segmented_png_required": true
+      },
+      "notes": "긴 상세컷과 복수 슬롯을 가진 내부 샘플. 다중 드롭, 순차 배치, 분할 PNG 기준 fixture."
+    },
+    {
+      "id": "F03",
+      "name": "sample_template_existing_html",
+      "file": "fixtures/fixture_03_sample_template_existing_html.html",
+      "source_type": "internal_sample",
+      "category": "legacy_existing_html_explicit_mixed",
+      "priority": "P0",
+      "page_width_px": 1200,
+      "slot_contract": {
+        "detection_mode": "explicit_mixed",
+        "required_exact_count": 4,
+        "required_pattern_groups": {
+          "[data-image-slot='hero-main']": 1,
+          ".card-image.image-slot": 3
+        },
+        "false_positive_budget_max": 0
+      },
+      "asset_contract": {
+        "existing_img_count": 0,
+        "custom_scheme_required": false,
+        "background_image_required": false
+      },
+      "save_export_contract": {
+        "linked_html_required": true,
+        "embedded_html_required": true,
+        "full_png_required": true,
+        "segmented_png_required": false
+      },
+      "notes": "기존 HTML을 가져왔을 때 explicit slot과 class 기반 slot이 함께 살아야 하는 기준 fixture."
+    },
+    {
+      "id": "F04",
+      "name": "sample_dring_walk_allinone",
+      "file": "fixtures/fixture_04_sample_dring_walk_allinone.html",
+      "source_type": "internal_sample",
+      "category": "heuristic_placeholder_storytelling",
+      "priority": "P0",
+      "page_width_px": 860,
+      "slot_contract": {
+        "detection_mode": "heuristic",
+        "required_min_count": 16,
+        "required_pattern_groups": {
+          ".ph.hero-visual": 1,
+          ".ph.visual": 3,
+          ".ph.c-box": 6,
+          ".warn-card .ph.img": 2,
+          ".step-wrap .ph.img": 3,
+          ".cta-char": 1
+        },
+        "false_positive_budget_max": 2
+      },
+      "asset_contract": {
+        "existing_img_count": 0,
+        "custom_scheme_required": false,
+        "background_image_required": false
+      },
+      "save_export_contract": {
+        "linked_html_required": true,
+        "embedded_html_required": true,
+        "full_png_required": true,
+        "segmented_png_required": true
+      },
+      "notes": "플레이스홀더 문구, 카드 콜라주, 스토리텔링 섹션이 섞인 고난도 fixture. heuristic auto-detect의 성능 기준."
+    },
+    {
+      "id": "F05",
+      "name": "user_melting_cheese_compact",
+      "file": "fixtures/fixture_05_user_melting_cheese_compact.html",
+      "source_type": "user_real_world_sample",
+      "category": "heuristic_mixed_existing_images_custom_scheme",
+      "priority": "P0",
+      "page_width_px": 860,
+      "slot_contract": {
+        "detection_mode": "heuristic_mixed",
+        "required_exact_count": 13,
+        "required_pattern_groups": {
+          ".hero-shot.media-shell": 1,
+          ".option-list .opt-thumb.media-shell": 2,
+          "section.bg-ivory > .media-shell": 1,
+          ".ba-wrap .media-shell": 2,
+          ".set-grid .thumb.media-shell": 3,
+          ".point-hero .visual.media-shell": 4
+        },
+        "false_positive_budget_max": 1
+      },
+      "asset_contract": {
+        "existing_img_count": 2,
+        "custom_scheme_required": true,
+        "supported_custom_schemes": [
+          "uploaded:"
+        ],
+        "background_image_required": false
+      },
+      "save_export_contract": {
+        "linked_html_required": true,
+        "embedded_html_required": true,
+        "full_png_required": true,
+        "segmented_png_required": true,
+        "must_preserve_existing_images": true
+      },
+      "notes": "실사용자가 제공한 실제 상세페이지. placeholder와 기존 img, uploaded: 커스텀 경로가 섞인 핵심 기준 fixture."
+    }
+  ]
+}

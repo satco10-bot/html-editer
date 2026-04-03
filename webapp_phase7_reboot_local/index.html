@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상세페이지 웹앱 로컬 에디터 · UX 리부트</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <div class="brand__eyebrow">LOCAL DETAIL PAGE EDITOR · UX REBOOT</div>
+        <h1>상세페이지 로컬 웹앱</h1>
+        <div class="topbar__sub">버튼 나열형 인터페이스를 줄이고, 캔버스·코드·속성 패널 중심으로 다시 묶은 리부트 셸입니다.</div>
+      </div>
+
+      <div class="topbar__group">
+        <span class="topbar__label">열기</span>
+        <button id="openHtmlButton" class="button">HTML 열기</button>
+        <button id="openFolderButton" class="button button--secondary">폴더 열기</button>
+        <label class="mini-control">
+          <span>Fixture</span>
+          <select id="fixtureSelect"></select>
+        </label>
+        <button id="loadFixtureButton" class="button button--secondary">불러오기</button>
+      </div>
+
+      <div class="topbar__group">
+        <span class="topbar__label">저장 / 출력</span>
+        <button id="downloadEditedButton" class="button button--ghost">편집 HTML</button>
+        <button id="downloadNormalizedButton" class="button button--ghost">정규화 HTML</button>
+        <button id="downloadLinkedZipButton" class="button button--ghost">링크 ZIP</button>
+        <label class="mini-control">
+          <span>Preset</span>
+          <select id="exportPresetSelect"></select>
+        </label>
+        <label class="mini-control">
+          <span>배율</span>
+          <select id="exportScaleSelect">
+            <option value="1">1x</option>
+            <option value="1.5" selected>1.5x</option>
+            <option value="2">2x</option>
+          </select>
+        </label>
+        <button id="exportPngButton" class="button button--ghost">PNG</button>
+        <button id="exportSectionsZipButton" class="button button--ghost">섹션 ZIP</button>
+        <button id="exportPresetPackageButton" class="button button--ghost">Preset ZIP</button>
+      </div>
+
+      <div class="topbar__group topbar__group--workspace">
+        <span class="topbar__label">작업</span>
+        <button id="undoButton" class="button button--ghost">되돌리기</button>
+        <button id="redoButton" class="button button--ghost">다시하기</button>
+        <button id="restoreAutosaveButton" class="button button--ghost">자동저장 복구</button>
+        <button id="toggleLeftSidebarButton" class="button button--ghost">왼쪽 패널</button>
+        <button id="toggleRightSidebarButton" class="button button--ghost">오른쪽 패널</button>
+        <button id="focusModeButton" class="button button--ghost">캔버스 집중</button>
+      </div>
+
+      <input id="htmlFileInput" type="file" accept=".html,.htm,text/html" hidden />
+      <input id="folderInput" type="file" accept=".html,.htm,image/*" webkitdirectory multiple hidden />
+      <input id="replaceImageInput" type="file" accept="image/*" multiple hidden />
+    </header>
+
+    <aside id="leftSidebar" class="sidebar sidebar--left">
+      <div class="sidebar-tabs">
+        <button class="sidebar-tab is-active" data-sidebar-tab="left-import">가져오기</button>
+        <button class="sidebar-tab" data-sidebar-tab="left-code">코드</button>
+        <button class="sidebar-tab" data-sidebar-tab="left-project">프로젝트</button>
+      </div>
+
+      <section class="panel sidebar-panel is-active" data-sidebar-panel="left-import">
+        <div class="panel__header">
+          <h2>가져오기</h2>
+          <button id="applyPasteButton" class="button button--secondary button--small">붙여넣기 적용</button>
+        </div>
+        <div id="localModeNotice"></div>
+        <div class="form-grid form-grid--spaced">
+          <label class="field">
+            <span>붙여넣기 HTML</span>
+            <textarea id="htmlPasteInput" rows="12" placeholder="기존 상세페이지 HTML을 붙여넣어 주세요."></textarea>
+          </label>
+        </div>
+        <p class="hint">실사용 기준에선 폴더 import가 가장 안정적입니다. 상대경로와 <code>uploaded:</code> 매핑을 함께 잡습니다.</p>
+      </section>
+
+      <section class="panel sidebar-panel" data-sidebar-panel="left-code">
+        <div class="panel__header panel__header--split">
+          <h2>코드 워크벤치</h2>
+          <div class="button-row button-row--compact">
+            <button id="reloadCodeFromEditorButton" class="button button--ghost button--small">현재 편집본 불러오기</button>
+            <button id="applyCodeToEditorButton" class="button button--secondary button--small">코드 적용</button>
+          </div>
+        </div>
+        <div class="segmented segmented--small">
+          <button class="segmented__item is-active" data-code-source="edited">편집본</button>
+          <button class="segmented__item" data-code-source="normalized">정규화</button>
+          <button class="segmented__item" data-code-source="original">원본</button>
+          <button class="segmented__item" data-code-source="report">리포트</button>
+        </div>
+        <div class="code-toolbar">
+          <input id="codeSearchInput" class="asset-filter" type="search" placeholder="코드 검색" />
+          <button id="codeSearchNextButton" class="button button--ghost button--small">다음</button>
+        </div>
+        <textarea id="codeEditorTextarea" class="code-editor" spellcheck="false"></textarea>
+        <pre id="editedCodeView" class="code-view code-view--hidden"></pre>
+        <pre id="normalizedCodeView" class="code-view code-view--hidden"></pre>
+        <pre id="originalCodeView" class="code-view code-view--hidden"></pre>
+        <pre id="jsonReportView" class="code-view code-view--hidden"></pre>
+        <p class="hint">현재 리부트 셸에서는 코드 편집과 적용을 다시 붙였습니다. 검색은 다음 일치 위치로 이동합니다.</p>
+      </section>
+
+      <section class="panel sidebar-panel" data-sidebar-panel="left-project">
+        <div class="panel__header">
+          <h2>프로젝트 상태</h2>
+        </div>
+        <div id="summaryCards" class="metric-grid"></div>
+        <div class="panel-divider"></div>
+        <div class="panel__header">
+          <h2>이슈</h2>
+        </div>
+        <ul id="issueList" class="issue-list"></ul>
+      </section>
+    </aside>
+
+    <main class="main-stage">
+      <div class="stage-toolbar stage-toolbar--reboot">
+        <div class="stage-toolbar__row">
+          <div class="selection-mode segmented">
+            <button class="segmented__item is-active" data-selection-mode="smart">스마트</button>
+            <button class="segmented__item" data-selection-mode="image">이미지</button>
+            <button class="segmented__item" data-selection-mode="text">텍스트</button>
+            <button class="segmented__item" data-selection-mode="box">박스</button>
+          </div>
+          <div class="quick-actions button-row">
+            <button id="replaceImageButton" class="button button--secondary">이미지 넣기</button>
+            <button id="manualSlotButton" class="button button--ghost">슬롯 지정</button>
+            <button id="demoteSlotButton" class="button button--warn">슬롯 해제</button>
+            <button id="textEditButton" class="button button--ghost">텍스트 편집</button>
+            <button id="toggleHideButton" class="button button--ghost">숨김</button>
+            <button id="toggleLockButton" class="button button--ghost">잠금</button>
+            <button id="redetectButton" class="button button--ghost">다시 감지</button>
+          </div>
+        </div>
+        <div class="stage-toolbar__row">
+          <div class="image-preset-group segmented segmented--small">
+            <button class="segmented__item" data-preset="cover">꽉 채우기</button>
+            <button class="segmented__item" data-preset="contain">맞춤 넣기</button>
+            <button class="segmented__item" data-preset="top">상단</button>
+            <button class="segmented__item" data-preset="center">가운데</button>
+            <button class="segmented__item" data-preset="bottom">하단</button>
+            <button class="segmented__item" data-action="remove-image">이미지 복구/제거</button>
+          </div>
+          <div class="canvas-controls button-row">
+            <button id="zoomOutButton" class="button button--ghost button--small">-</button>
+            <div id="zoomLabel" class="mini-control mini-control--value">100%</div>
+            <button id="zoomInButton" class="button button--ghost button--small">+</button>
+            <button id="zoomResetButton" class="button button--ghost button--small">100%</button>
+            <button id="zoomFitButton" class="button button--ghost button--small">폭 맞춤</button>
+          </div>
+        </div>
+        <div class="stage-toolbar__row stage-toolbar__row--meta">
+          <div class="stage-hint">Shift+드래그 다중선택, 선택 요소 드래그 이동, 스냅 가이드 지원. 현재 부족한 건 리사이즈/추가/복제/그룹 등 직접 편집 계열입니다.</div>
+          <div id="projectMeta" class="project-meta"></div>
+        </div>
+      </div>
+
+      <section class="stage-panel stage-panel--preview">
+        <div id="previewViewport" class="preview-viewport">
+          <div id="previewScaler" class="preview-scaler">
+            <iframe id="previewFrame" sandbox="allow-same-origin"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside id="rightSidebar" class="sidebar sidebar--right">
+      <div class="sidebar-tabs">
+        <button class="sidebar-tab is-active" data-sidebar-tab="right-inspect">선택/검사</button>
+        <button class="sidebar-tab" data-sidebar-tab="right-text">텍스트</button>
+        <button class="sidebar-tab" data-sidebar-tab="right-arrange">정렬</button>
+        <button class="sidebar-tab" data-sidebar-tab="right-layers">레이어</button>
+        <button class="sidebar-tab" data-sidebar-tab="right-assets">자산/출력</button>
+      </div>
+
+      <section class="panel sidebar-panel is-active" data-sidebar-panel="right-inspect">
+        <div class="panel__header">
+          <h2>선택 / 슬롯 진단</h2>
+        </div>
+        <div id="selectionInspector"></div>
+        <div class="panel-divider"></div>
+        <div class="panel__header">
+          <h2>정규화 진단</h2>
+        </div>
+        <div id="normalizeStats" class="stat-stack"></div>
+        <div class="panel-divider"></div>
+        <div class="panel__header panel__header--split">
+          <h2>출력 전 검수</h2>
+          <button id="preflightRefreshButton" class="button button--ghost button--small">다시 검사</button>
+        </div>
+        <div id="preflightContainer"></div>
+      </section>
+
+      <section class="panel sidebar-panel" data-sidebar-panel="right-text">
+        <div class="panel__header panel__header--split">
+          <h2>텍스트 스타일</h2>
+          <div id="textStyleSummary" class="mini-summary">텍스트 미선택</div>
+        </div>
+        <div class="style-form">
+          <div class="style-grid">
+            <label class="field field--mini">
+              <span>글자 크기</span>
+              <input id="textFontSizeInput" type="number" min="8" step="1" placeholder="px" />
+            </label>
+            <label class="field field--mini">
+              <span>줄간격</span>
+              <input id="textLineHeightInput" type="number" min="0.8" step="0.05" placeholder="1.5" />
+            </label>
+            <label class="field field--mini">
+              <span>자간</span>
+              <input id="textLetterSpacingInput" type="number" step="0.01" placeholder="em" />
+            </label>
+            <label class="field field--mini">
+              <span>굵기</span>
+              <select id="textWeightSelect">
+                <option value="">유지</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+              </select>
+            </label>
+            <label class="field field--mini field--color">
+              <span>글자색</span>
+              <input id="textColorInput" type="color" value="#333333" />
+            </label>
+          </div>
+          <div class="align-toggle-group">
+            <button class="toggle" data-text-align="left">왼쪽</button>
+            <button class="toggle" data-text-align="center">가운데</button>
+            <button class="toggle" data-text-align="right">오른쪽</button>
+          </div>
+          <div class="button-row">
+            <button id="applyTextStyleButton" class="button button--secondary">텍스트 스타일 적용</button>
+            <button id="clearTextStyleButton" class="button button--ghost">텍스트 스타일 비우기</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel sidebar-panel" data-sidebar-panel="right-arrange">
+        <div class="panel__header panel__header--split">
+          <h2>정렬 / 간격</h2>
+          <div id="batchSelectionSummary" class="mini-summary">1개 이하 선택</div>
+        </div>
+        <div class="action-grid">
+          <button class="button button--ghost button--small" data-batch-action="same-width">같은 너비</button>
+          <button class="button button--ghost button--small" data-batch-action="same-height">같은 높이</button>
+          <button class="button button--ghost button--small" data-batch-action="same-size">같은 크기</button>
+          <button class="button button--ghost button--small" data-batch-action="align-left">왼쪽 정렬</button>
+          <button class="button button--ghost button--small" data-batch-action="align-center">가운데 정렬</button>
+          <button class="button button--ghost button--small" data-batch-action="align-right">오른쪽 정렬</button>
+          <button class="button button--ghost button--small" data-batch-action="align-top">위쪽 정렬</button>
+          <button class="button button--ghost button--small" data-batch-action="align-middle">세로 중앙</button>
+          <button class="button button--ghost button--small" data-batch-action="align-bottom">아래쪽 정렬</button>
+          <button class="button button--ghost button--small" data-batch-action="distribute-horizontal">가로 분배</button>
+          <button class="button button--ghost button--small" data-batch-action="distribute-vertical">세로 분배</button>
+          <button class="button button--warn button--small" data-batch-action="reset-transform">배치 초기화</button>
+        </div>
+        <p class="hint">현재는 <code>transform</code> 기반 배치입니다. 그래서 Figma처럼 부모 레이아웃 자체를 다시 짜는 단계는 아직 아닙니다.</p>
+      </section>
+
+      <section class="panel sidebar-panel" data-sidebar-panel="right-layers">
+        <div class="panel__header panel__header--split">
+          <h2>레이어</h2>
+          <input id="layerFilterInput" class="asset-filter" type="search" placeholder="레이어 검색" />
+        </div>
+        <div id="layerTree" class="layer-tree"></div>
+        <div class="panel-divider"></div>
+        <div class="panel__header">
+          <h2>슬롯 목록</h2>
+        </div>
+        <div id="slotList" class="slot-list"></div>
+      </section>
+
+      <section class="panel sidebar-panel" data-sidebar-panel="right-assets">
+        <div class="panel__header panel__header--split">
+          <h2>자산 레지스트리</h2>
+          <input id="assetFilterInput" class="asset-filter" type="search" placeholder="경로 / 스킴 / 상태 검색" />
+        </div>
+        <div id="assetTableWrap" class="asset-table-wrap"></div>
+        <div class="panel-divider"></div>
+        <div class="panel__header">
+          <h2>내보내기 / 리포트</h2>
+        </div>
+        <div class="button-grid">
+          <button id="downloadReportButton" class="button button--ghost">리포트 JSON</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="statusbar">
+    <div id="statusText">대기 중</div>
+  </footer>
+
+  <script src="./app.bundle.js"></script>
+</body>
+</html>

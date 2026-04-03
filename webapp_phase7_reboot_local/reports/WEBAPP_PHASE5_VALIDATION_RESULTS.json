@@ -1,0 +1,547 @@
+{
+  "summary": {
+    "ok": true,
+    "check_count": 106,
+    "passed": 106,
+    "failed": 0,
+    "bundle_bytes": 225109,
+    "bundle_sha256": "fac6d508099a0c00b91879c44a1b722e20d453531f9d6e5b5575757cf0b47874",
+    "browser_smoke_status": "blocked"
+  },
+  "checks": [
+    {
+      "name": "bundle_node_syntax_check",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "index_has_bundle_script",
+      "ok": true,
+      "detail": "index.html should load app.bundle.js"
+    },
+    {
+      "name": "index_no_module_script",
+      "ok": true,
+      "detail": "local mode avoids ESM requirement"
+    },
+    {
+      "name": "bundle_has_no_es_import",
+      "ok": true,
+      "detail": "bundle should be plain script"
+    },
+    {
+      "name": "bundle_has_no_export_keyword",
+      "ok": true,
+      "detail": "bundle should not expose ESM export statements"
+    },
+    {
+      "name": "bundle_uses_srcdoc_preview",
+      "ok": true,
+      "detail": "preview should be iframe srcdoc based"
+    },
+    {
+      "name": "main_boot_has_no_fetch",
+      "ok": true,
+      "detail": "startup flow should not require network fetch"
+    },
+    {
+      "name": "bundle_has_no_file_system_access_api",
+      "ok": true,
+      "detail": "local file:// mode should not depend on secure-context file picker APIs"
+    },
+    {
+      "name": "bundle_has_autosave_key",
+      "ok": true,
+      "detail": "autosave key should exist"
+    },
+    {
+      "name": "package_is_phase5",
+      "ok": true,
+      "detail": "{\"name\": \"detail-page-webapp-phase5-local\", \"private\": true, \"version\": \"0.5.0\", \"scripts\": {\"build:local\": \"python3 scripts/build_local_bundle.py\", \"validate\": \"python3 scripts/validate_phase5.py\"}}"
+    },
+    {
+      "name": "readme_mentions_phase5",
+      "ok": true,
+      "detail": "README should document phase5 capabilities"
+    },
+    {
+      "name": "index_has_openHtmlButton",
+      "ok": true,
+      "detail": "openHtmlButton"
+    },
+    {
+      "name": "index_has_openFolderButton",
+      "ok": true,
+      "detail": "openFolderButton"
+    },
+    {
+      "name": "index_has_loadFixtureButton",
+      "ok": true,
+      "detail": "loadFixtureButton"
+    },
+    {
+      "name": "index_has_applyPasteButton",
+      "ok": true,
+      "detail": "applyPasteButton"
+    },
+    {
+      "name": "index_has_replaceImageButton",
+      "ok": true,
+      "detail": "replaceImageButton"
+    },
+    {
+      "name": "index_has_manualSlotButton",
+      "ok": true,
+      "detail": "manualSlotButton"
+    },
+    {
+      "name": "index_has_demoteSlotButton",
+      "ok": true,
+      "detail": "demoteSlotButton"
+    },
+    {
+      "name": "index_has_redetectButton",
+      "ok": true,
+      "detail": "redetectButton"
+    },
+    {
+      "name": "index_has_textEditButton",
+      "ok": true,
+      "detail": "textEditButton"
+    },
+    {
+      "name": "index_has_undoButton",
+      "ok": true,
+      "detail": "undoButton"
+    },
+    {
+      "name": "index_has_redoButton",
+      "ok": true,
+      "detail": "redoButton"
+    },
+    {
+      "name": "index_has_restoreAutosaveButton",
+      "ok": true,
+      "detail": "restoreAutosaveButton"
+    },
+    {
+      "name": "index_has_downloadEditedButton",
+      "ok": true,
+      "detail": "downloadEditedButton"
+    },
+    {
+      "name": "index_has_downloadNormalizedButton",
+      "ok": true,
+      "detail": "downloadNormalizedButton"
+    },
+    {
+      "name": "index_has_downloadLinkedZipButton",
+      "ok": true,
+      "detail": "downloadLinkedZipButton"
+    },
+    {
+      "name": "index_has_exportScaleSelect",
+      "ok": true,
+      "detail": "exportScaleSelect"
+    },
+    {
+      "name": "index_has_exportPngButton",
+      "ok": true,
+      "detail": "exportPngButton"
+    },
+    {
+      "name": "index_has_exportSectionsZipButton",
+      "ok": true,
+      "detail": "exportSectionsZipButton"
+    },
+    {
+      "name": "index_has_downloadReportButton",
+      "ok": true,
+      "detail": "downloadReportButton"
+    },
+    {
+      "name": "index_has_replaceImageInput",
+      "ok": true,
+      "detail": "replaceImageInput"
+    },
+    {
+      "name": "index_has_previewFrame",
+      "ok": true,
+      "detail": "previewFrame"
+    },
+    {
+      "name": "index_has_slotList",
+      "ok": true,
+      "detail": "slotList"
+    },
+    {
+      "name": "index_has_selectionInspector",
+      "ok": true,
+      "detail": "selectionInspector"
+    },
+    {
+      "name": "index_has_assetFilterInput",
+      "ok": true,
+      "detail": "assetFilterInput"
+    },
+    {
+      "name": "index_has_preflightContainer",
+      "ok": true,
+      "detail": "preflightContainer"
+    },
+    {
+      "name": "index_has_preflightRefreshButton",
+      "ok": true,
+      "detail": "preflightRefreshButton"
+    },
+    {
+      "name": "index_has_layerTree",
+      "ok": true,
+      "detail": "layerTree"
+    },
+    {
+      "name": "index_has_layerFilterInput",
+      "ok": true,
+      "detail": "layerFilterInput"
+    },
+    {
+      "name": "index_has_textFontSizeInput",
+      "ok": true,
+      "detail": "textFontSizeInput"
+    },
+    {
+      "name": "index_has_textLineHeightInput",
+      "ok": true,
+      "detail": "textLineHeightInput"
+    },
+    {
+      "name": "index_has_textLetterSpacingInput",
+      "ok": true,
+      "detail": "textLetterSpacingInput"
+    },
+    {
+      "name": "index_has_textWeightSelect",
+      "ok": true,
+      "detail": "textWeightSelect"
+    },
+    {
+      "name": "index_has_textColorInput",
+      "ok": true,
+      "detail": "textColorInput"
+    },
+    {
+      "name": "index_has_applyTextStyleButton",
+      "ok": true,
+      "detail": "applyTextStyleButton"
+    },
+    {
+      "name": "index_has_clearTextStyleButton",
+      "ok": true,
+      "detail": "clearTextStyleButton"
+    },
+    {
+      "name": "index_has_batchSelectionSummary",
+      "ok": true,
+      "detail": "batchSelectionSummary"
+    },
+    {
+      "name": "all_main_js_ids_exist_in_index",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "frame_editor_has_toggleTextEdit",
+      "ok": true,
+      "detail": "toggleTextEdit"
+    },
+    {
+      "name": "frame_editor_has_captureSnapshot",
+      "ok": true,
+      "detail": "captureSnapshot"
+    },
+    {
+      "name": "frame_editor_has_exportFullPngBlob",
+      "ok": true,
+      "detail": "exportFullPngBlob"
+    },
+    {
+      "name": "frame_editor_has_exportSectionPngEntries",
+      "ok": true,
+      "detail": "exportSectionPngEntries"
+    },
+    {
+      "name": "frame_editor_has_getLinkedPackageEntries",
+      "ok": true,
+      "detail": "getLinkedPackageEntries"
+    },
+    {
+      "name": "frame_editor_has_applyFiles",
+      "ok": true,
+      "detail": "applyFiles"
+    },
+    {
+      "name": "frame_editor_has_removeImageFromSelected",
+      "ok": true,
+      "detail": "removeImageFromSelected"
+    },
+    {
+      "name": "frame_editor_has_markSelectedAsSlot",
+      "ok": true,
+      "detail": "markSelectedAsSlot"
+    },
+    {
+      "name": "frame_editor_has_demoteSelectedSlot",
+      "ok": true,
+      "detail": "demoteSelectedSlot"
+    },
+    {
+      "name": "frame_editor_has_getCurrentPortableHtml",
+      "ok": true,
+      "detail": "getCurrentPortableHtml"
+    },
+    {
+      "name": "frame_editor_has_applyTextStyle",
+      "ok": true,
+      "detail": "applyTextStyle"
+    },
+    {
+      "name": "frame_editor_has_applyBatchLayout",
+      "ok": true,
+      "detail": "applyBatchLayout"
+    },
+    {
+      "name": "frame_editor_has_getPreflightReport",
+      "ok": true,
+      "detail": "getPreflightReport"
+    },
+    {
+      "name": "frame_editor_has_selectNodeByUid",
+      "ok": true,
+      "detail": "selectNodeByUid"
+    },
+    {
+      "name": "frame_editor_has_refreshDerivedMeta",
+      "ok": true,
+      "detail": "refreshDerivedMeta"
+    },
+    {
+      "name": "renderer_has_renderLayerTree",
+      "ok": true,
+      "detail": "renderLayerTree"
+    },
+    {
+      "name": "renderer_has_renderPreflight",
+      "ok": true,
+      "detail": "renderPreflight"
+    },
+    {
+      "name": "renderer_has_renderSelectionInspector",
+      "ok": true,
+      "detail": "renderSelectionInspector"
+    },
+    {
+      "name": "index_has_batch_buttons",
+      "ok": true,
+      "detail": "expect batch layout actions in UI"
+    },
+    {
+      "name": "index_has_text_align_buttons",
+      "ok": true,
+      "detail": "left / center / right buttons"
+    },
+    {
+      "name": "frame_has_phase5_multi_select_class",
+      "ok": true,
+      "detail": "multi-select highlight should exist"
+    },
+    {
+      "name": "frame_has_preflight_keywords",
+      "ok": true,
+      "detail": "preflight checks should exist"
+    },
+    {
+      "name": "fixture_count_is_5",
+      "ok": true,
+      "detail": "fixtures=5"
+    },
+    {
+      "name": "fixture_exists_F01",
+      "ok": true,
+      "detail": "/tmp/webapp_phase5_local/data/fixtures/fixture_01_blank_builder_860.html"
+    },
+    {
+      "name": "F01_selector_[data-image-slot='hero-main']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F01_selector_[data-image-slot='detail-slot-1']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F01_selector_[data-image-slot='detail-slot-2']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F01_required_exact_count",
+      "ok": true,
+      "detail": "expected=3, actual=3"
+    },
+    {
+      "name": "fixture_exists_F02",
+      "ok": true,
+      "detail": "/tmp/webapp_phase5_local/data/fixtures/fixture_02_sample_shop_builder_860.html"
+    },
+    {
+      "name": "F02_selector_[data-image-slot='hero-main']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F02_selector_[data-image-slot='fit-main']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F02_selector_[data-image-slot='fit-sub-1']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F02_selector_[data-image-slot='fit-sub-2']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F02_selector_[data-image-slot='detail-long-1']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F02_selector_[data-image-slot='detail-long-2']",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "F02_required_exact_count",
+      "ok": true,
+      "detail": "expected=6, actual=6"
+    },
+    {
+      "name": "fixture_exists_F03",
+      "ok": true,
+      "detail": "/tmp/webapp_phase5_local/data/fixtures/fixture_03_sample_template_existing_html.html"
+    },
+    {
+      "name": "F03_pattern_[data-image-slot='hero-main']",
+      "ok": true,
+      "detail": "expected=1, actual=1"
+    },
+    {
+      "name": "F03_pattern_.card-image.image-slot",
+      "ok": true,
+      "detail": "expected=3, actual=3"
+    },
+    {
+      "name": "F03_required_exact_from_groups",
+      "ok": true,
+      "detail": "expected=4, actual=4"
+    },
+    {
+      "name": "fixture_exists_F04",
+      "ok": true,
+      "detail": "/tmp/webapp_phase5_local/data/fixtures/fixture_04_sample_dring_walk_allinone.html"
+    },
+    {
+      "name": "F04_pattern_.ph.hero-visual",
+      "ok": true,
+      "detail": "expected=1, actual=1"
+    },
+    {
+      "name": "F04_pattern_.ph.visual",
+      "ok": true,
+      "detail": "expected=3, actual=3"
+    },
+    {
+      "name": "F04_pattern_.ph.c-box",
+      "ok": true,
+      "detail": "expected=6, actual=6"
+    },
+    {
+      "name": "F04_pattern_.warn-card .ph.img",
+      "ok": true,
+      "detail": "expected=2, actual=2"
+    },
+    {
+      "name": "F04_pattern_.step-wrap .ph.img",
+      "ok": true,
+      "detail": "expected=3, actual=3"
+    },
+    {
+      "name": "F04_pattern_.cta-char",
+      "ok": true,
+      "detail": "expected=1, actual=1"
+    },
+    {
+      "name": "F04_required_min_from_groups",
+      "ok": true,
+      "detail": "min=16, actual=16"
+    },
+    {
+      "name": "fixture_exists_F05",
+      "ok": true,
+      "detail": "/tmp/webapp_phase5_local/data/fixtures/fixture_05_user_melting_cheese_compact.html"
+    },
+    {
+      "name": "F05_pattern_.hero-shot.media-shell",
+      "ok": true,
+      "detail": "expected=1, actual=1"
+    },
+    {
+      "name": "F05_pattern_.option-list .opt-thumb.media-shell",
+      "ok": true,
+      "detail": "expected=2, actual=2"
+    },
+    {
+      "name": "F05_pattern_section.bg-ivory > .media-shell",
+      "ok": true,
+      "detail": "expected=1, actual=1"
+    },
+    {
+      "name": "F05_pattern_.ba-wrap .media-shell",
+      "ok": true,
+      "detail": "expected=2, actual=2"
+    },
+    {
+      "name": "F05_pattern_.set-grid .thumb.media-shell",
+      "ok": true,
+      "detail": "expected=3, actual=3"
+    },
+    {
+      "name": "F05_pattern_.point-hero .visual.media-shell",
+      "ok": true,
+      "detail": "expected=4, actual=4"
+    },
+    {
+      "name": "F05_required_exact_from_groups",
+      "ok": true,
+      "detail": "expected=13, actual=13"
+    },
+    {
+      "name": "F05_has_two_uploaded_img_refs",
+      "ok": true,
+      "detail": "uploaded_count=2"
+    },
+    {
+      "name": "F05_has_media_shells",
+      "ok": true,
+      "detail": "expected real-world slot patterns"
+    }
+  ],
+  "browser_smoke": {
+    "status": "blocked",
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///tmp/webapp_phase5_local/index.html\nCall log:\n  - navigating to \"file:///tmp/webapp_phase5_local/index.html\", waiting until \"load\"\n"
+  }
+}

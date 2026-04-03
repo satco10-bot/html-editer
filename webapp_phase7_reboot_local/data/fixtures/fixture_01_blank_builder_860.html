@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새 860px 빌더</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f8fafc;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #111827;
+      padding: 32px 0 80px;
+    }
+    .detail-builder-canvas {
+      width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.10);
+    }
+    .builder-section {
+      position: relative;
+      width: 100%;
+      min-height: 620px;
+      height: 620px;
+      padding: 52px;
+      border-top: 1px dashed #e2e8f0;
+    }
+    .section-hero {
+      background: linear-gradient(180deg, #fff7ed 0%, #ffffff 56%);
+    }
+    .section-product {
+      background: #ffffff;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      color: #c2410c;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .headline {
+      margin: 18px 0 0;
+      font-size: 58px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+    }
+    .subcopy {
+      margin: 18px 0 0;
+      max-width: 340px;
+      color: #475569;
+      font-size: 20px;
+      line-height: 1.65;
+    }
+    .cta-box {
+      border-radius: 28px;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .price-box {
+      border-radius: 22px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      padding: 24px 26px;
+    }
+    .price-box strong {
+      font-size: 38px;
+      letter-spacing: -0.03em;
+    }
+    .price-box span {
+      display: block;
+      margin-top: 8px;
+      font-size: 15px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="detail-builder-canvas editable-box" data-builder-canvas="860px 캔버스" data-editable-box="860px 캔버스" data-box-lock-move="1" data-box-lock-resize="1">
+    <section class="builder-section section-hero editable-box" data-builder-section="히어로 섹션" data-editable-box="히어로 섹션" data-box-lock-move="1" data-box-lock-width="1">
+      <div class="editable-box editable-text eyebrow" data-editable-box="상단 태그" data-editable-text="상단 태그" style="position:absolute; left:56px; top:54px; width:160px;">NEW DROP</div>
+      <div class="editable-box editable-text headline" data-editable-box="메인 타이틀" data-editable-text="메인 타이틀" style="position:absolute; left:56px; top:108px; width:360px;">새 상세페이지를 바로 시작하세요</div>
+      <div class="editable-box editable-text subcopy" data-editable-box="메인 설명" data-editable-text="메인 설명" style="position:absolute; left:56px; top:298px; width:330px;">텍스트는 클릭해서 수정하고, 이미지 슬롯에는 파일을 드래그해서 넣으시면 됩니다.</div>
+      <div class="image-slot editable-box" data-image-slot="hero-main" data-slot-label="메인 이미지" data-editable-box="메인 이미지 슬롯" style="position:absolute; left:430px; top:52px; width:360px; height:480px; border-radius:30px; background:#f1f5f9; overflow:hidden;"></div>
+      <div class="editable-box cta-box" data-editable-box="버튼 박스" style="position:absolute; left:56px; top:436px; width:240px; height:84px;">여기에 CTA 배치</div>
+    </section>
+    <section class="builder-section section-product editable-box" data-builder-section="상품 정보 섹션" data-editable-box="상품 정보 섹션" data-box-lock-move="1" data-box-lock-width="1" style="height:540px; min-height:540px;">
+      <div class="editable-box price-box" data-editable-box="가격 정보 박스" style="position:absolute; left:54px; top:58px; width:300px; height:160px;">
+        <div class="editable-box editable-text" data-editable-box="가격" data-editable-text="가격" style="font-size:38px; font-weight:900;">₩ 49,000</div>
+        <div class="editable-box editable-text" data-editable-box="가격 설명" data-editable-text="가격 설명" style="margin-top:8px; color:#64748b; font-size:15px;">여기에 할인, 배송 문구를 넣어보세요.</div>
+      </div>
+      <div class="image-slot editable-box" data-image-slot="detail-slot-1" data-slot-label="상세 이미지 1" data-editable-box="상세 이미지 슬롯 1" style="position:absolute; left:414px; top:56px; width:180px; height:220px; border-radius:20px; background:#f1f5f9; overflow:hidden;"></div>
+      <div class="image-slot editable-box" data-image-slot="detail-slot-2" data-slot-label="상세 이미지 2" data-editable-box="상세 이미지 슬롯 2" style="position:absolute; left:612px; top:56px; width:180px; height:220px; border-radius:20px; background:#f1f5f9; overflow:hidden;"></div>
+      <div class="editable-box editable-text" data-editable-box="하단 안내문" data-editable-text="하단 안내문" style="position:absolute; left:54px; top:286px; width:738px; font-size:28px; font-weight:800; line-height:1.32;">오른쪽 패널에서 새 텍스트/박스/이미지 슬롯을 계속 추가하면서 상세페이지를 완성해 보세요.</div>
+    </section>
+  </div>
+</body>
+</html>

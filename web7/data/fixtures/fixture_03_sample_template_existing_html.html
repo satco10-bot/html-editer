@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기존 HTML 샘플</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); color: #0f172a; }
+    .page { width: 1200px; margin: 40px auto 80px; background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12); }
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 620px; }
+    .hero-copy { padding: 72px 64px; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); display: flex; flex-direction: column; justify-content: center; }
+    .eyebrow { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #fff; color: #c2410c; font-weight: 700; margin-bottom: 18px; width: fit-content; }
+    h1 { font-size: 64px; line-height: 1.05; margin: 0 0 18px; letter-spacing: -0.04em; }
+    p { font-size: 21px; line-height: 1.65; margin: 0 0 28px; color: #475569; }
+    .hero-slot-wrap { display: flex; align-items: center; justify-content: center; padding: 40px; background: #fff; }
+    .hero-image-frame { width: 100%; height: 100%; min-height: 540px; border-radius: 26px; background: #f8fafc; overflow: hidden; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 28px; background: #fff; }
+    .card { border-radius: 22px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff; }
+    .card-image { height: 280px; background: #f1f5f9; overflow: hidden; }
+    .card-copy { padding: 18px 18px 20px; }
+    .card-copy h2 { margin: 0 0 8px; font-size: 24px; }
+    .card-copy span { color: #64748b; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <div class="page editable-box" data-editable-box="전체 페이지">
+    <section class="hero editable-box" data-editable-box="상단 히어로 섹션">
+      <div class="hero-copy editable-box" data-editable-box="왼쪽 카피 박스">
+        <span class="eyebrow editable-box editable-text" data-editable-box="태그" data-editable-text="태그">SPRING COLLECTION</span>
+        <h1 class="editable-box editable-text" data-editable-box="메인 타이틀" data-editable-text="메인 타이틀">이번 시즌 메인 배너</h1>
+        <p class="editable-box editable-text" data-editable-box="설명" data-editable-text="설명">오른쪽 큰 슬롯에 대표 이미지를 넣고, 아래 3개 슬롯에는 서브 컷을 넣어서 바로 배너 시안을 만들 수 있습니다.</p>
+      </div>
+      <div class="hero-slot-wrap editable-box" data-editable-box="오른쪽 메인 이미지 영역">
+        <div class="hero-image-frame" data-image-slot="hero-main" data-slot-label="메인 이미지"></div>
+      </div>
+    </section>
+    <section class="grid editable-box" data-editable-box="하단 카드 영역">
+      <article class="card editable-box" data-editable-box="카드 1">
+        <div class="card-image image-slot" data-slot-label="서브 이미지 1"></div>
+        <div class="card-copy">
+          <h2 class="editable-box editable-text" data-editable-box="카드 1 제목" data-editable-text="카드 1 제목">LOOK 01</h2>
+          <span class="editable-box editable-text" data-editable-box="카드 1 설명" data-editable-text="카드 1 설명">베스트 상품 컷</span>
+        </div>
+      </article>
+      <article class="card editable-box" data-editable-box="카드 2">
+        <div class="card-image image-slot" data-slot-label="서브 이미지 2"></div>
+        <div class="card-copy">
+          <h2 class="editable-box editable-text" data-editable-box="카드 2 제목" data-editable-text="카드 2 제목">LOOK 02</h2>
+          <span class="editable-box editable-text" data-editable-box="카드 2 설명" data-editable-text="카드 2 설명">코디 상세 컷</span>
+        </div>
+      </article>
+      <article class="card editable-box" data-editable-box="카드 3">
+        <div class="card-image image-slot" data-slot-label="서브 이미지 3"></div>
+        <div class="card-copy">
+          <h2 class="editable-box editable-text" data-editable-box="카드 3 제목" data-editable-text="카드 3 제목">LOOK 03</h2>
+          <span class="editable-box editable-text" data-editable-box="카드 3 설명" data-editable-text="카드 3 설명">포인트 연출 컷</span>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

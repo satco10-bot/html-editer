@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>멜팅치즈 세라믹 식기 세트 모바일 상세페이지 (컴팩트 버전)</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --page-width: 860px;
+  --bg-ivory: #FFFDF8;
+  --bg-cream: #FFF8E1;
+  --bg-soft: #FFFDF8;
+  --bg-warm: #FFF5D1;
+  --bg-card: #FFFFFF;
+  
+  --butter: #FFD54F;
+  --butter-deep: #FFC107;
+  
+  --text-main: #4A3320;
+  --text-sub: #7A6959;
+  --text-light: #AC9F91;
+  
+  --line: #FFE082;
+  --line-strong: #FFD54F;
+  
+  --brick: #FF8F00;
+  --brick-soft: #FFB300;
+  --brown: #5D4037;
+  
+  --shadow-sm: 0 8px 20px rgba(255, 193, 7, 0.12);
+  --shadow-md: 0 16px 36px rgba(255, 193, 7, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; background: #EFEFEF; display: flex; justify-content: center; font-family: 'Pretendard', sans-serif; color: var(--text-main); letter-spacing: -0.03em; }
+img { display: block; width: 100%; height: auto; }
+
+.page { width: var(--page-width); background: var(--bg-ivory); overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,.1); }
+
+/* 압축된 여백 */
+.section { padding: 90px 40px; position: relative; }
+.bg-cream { background: var(--bg-cream); }
+.bg-warm { background: var(--bg-warm); }
+.bg-ivory { background: var(--bg-ivory); }
+.bg-soft { background: var(--bg-soft); }
+.center { text-align: center; }
+
+/* 폰트 스케일 압축 (가독성은 유지) */
+.sec-label { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 24px; border-radius: 999px; font-size: 20px; font-weight: 900; color: var(--brown); background: var(--butter); border: 2px solid var(--line-strong); letter-spacing: .05em; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+.sec-title { font-size: 46px; line-height: 1.35; font-weight: 900; color: var(--text-main); letter-spacing: -0.04em; margin-bottom: 24px; word-break: keep-all; }
+.sec-desc { font-size: 24px; line-height: 1.6; color: var(--text-sub); font-weight: 600; word-break: keep-all; }
+
+/* 플레이스홀더 */
+.media-shell { position: relative; overflow: hidden; border-radius: 32px; border: 3px dashed var(--line-strong); background: var(--bg-cream); display:flex; align-items:center; justify-content:center; color: var(--brick); font-weight: 800; font-size: 22px; text-align: center; padding: 24px; }
+
+/* 1. HERO */
+.hero { padding: 100px 40px 80px; text-align: center; background: linear-gradient(180deg, #FFFDF8 0%, #FFF8E1 100%); }
+.hero h1 { margin: 24px 0 20px; font-size: 60px; line-height: 1.25; letter-spacing: -0.05em; font-weight: 1000; color: var(--text-main); word-break: keep-all; }
+.hero p { font-size: 24px; line-height: 1.6; font-weight: 600; color: var(--text-sub); word-break: keep-all; }
+.hero-shot { margin-top: 40px; height: 500px; border-style: solid; box-shadow: var(--shadow-md); }
+
+/* 2. SET OPTIONS (컴팩트 스택) */
+.option-list { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+.option-card { display: flex; flex-direction: column; background: var(--bg-card); border: 3px solid var(--line-strong); border-radius: 32px; padding: 36px; box-shadow: var(--shadow-sm); }
+.opt-thumb { height: 360px; border-radius: 20px; border-style: solid; margin-bottom: 24px; order: -1; }
+.opt-badge { display: inline-flex; align-items: center; min-height: 36px; padding: 0 16px; border-radius: 999px; background: var(--bg-warm); color: var(--brick); font-size: 18px; font-weight: 900; letter-spacing: .06em; margin-bottom: 16px; }
+.opt-title { font-size: 34px; line-height: 1.35; font-weight: 900; color: var(--text-main); margin-bottom: 16px; word-break: keep-all; }
+.opt-title span.sub { display: block; font-size: 22px; color: var(--text-sub); font-weight: 700; margin-top: 8px; }
+.opt-price { display: flex; align-items: baseline; gap: 12px; margin-top: 10px; }
+.opt-price .origin { font-size: 24px; font-weight: 700; color: var(--text-light); text-decoration: line-through; }
+.opt-price .final { font-size: 48px; line-height: 1; font-weight: 1000; color: var(--brick); }
+.opt-price .percent { display: inline-flex; align-items: center; justify-content: center; height: 38px; padding: 0 12px; background: var(--brick); color: #fff; border-radius: 10px; font-size: 24px; font-weight: 900; transform: translateY(-4px); }
+
+/* 3. INTRO NARRATIVE */
+.intro-q { font-size: 40px; font-weight: 900; color: var(--text-main); margin-bottom: 30px; line-height: 1.4; word-break: keep-all; }
+.intro-desc { font-size: 24px; font-weight: 600; color: var(--text-sub); line-height: 1.6; margin-bottom: 40px; word-break: keep-all; }
+.intro-bridge { font-size: 32px; font-weight: 900; color: var(--brick); margin-bottom: 40px; line-height: 1.5; word-break: keep-all; }
+.intro-box { background: var(--bg-cream); border: 3px solid var(--line-strong); border-radius: 32px; padding: 40px 30px; box-shadow: var(--shadow-sm); }
+.intro-box-kicker { font-size: 24px; font-weight: 900; color: var(--brick-soft); margin-bottom: 16px; }
+.intro-box-title { font-size: 36px; font-weight: 900; color: var(--text-main); margin-bottom: 30px; line-height: 1.4; word-break: keep-all; }
+.intro-bubbles { display: flex; flex-direction: column; gap: 16px; }
+.intro-bubble { background: #fff; border-radius: 999px; padding: 18px 24px; font-size: 22px; font-weight: 800; color: var(--text-main); border: 2px solid var(--line); box-shadow: var(--shadow-sm); text-align: center; word-break: keep-all; }
+
+/* COLOR MATCH SECTION (톤온톤 컬러 소개) */
+.color-wrap { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+.color-card { 
+  display: flex; align-items: center; gap: 30px; 
+  background: var(--bg-card); border: 3px solid var(--line); 
+  border-radius: 32px; padding: 30px; box-shadow: var(--shadow-sm); 
+}
+.color-circle { 
+  width: 100px; height: 100px; border-radius: 50%; flex-shrink: 0; 
+  border: 3px solid rgba(0,0,0,0.05); box-shadow: inset 0 6px 12px rgba(0,0,0,0.1);
+}
+.color-info { text-align: left; }
+.color-name { font-size: 32px; font-weight: 900; color: var(--text-main); margin-bottom: 8px; }
+.color-mat { font-size: 22px; font-weight: 600; color: var(--text-sub); }
+
+/* 4. SAFE MATERIAL (BA + 세라믹 스펙) */
+.ba-wrap { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+.ba-card { background: #fff; border-radius: 32px; overflow: hidden; border: 3px solid var(--line); box-shadow: var(--shadow-sm); position: relative; }
+.ba-badge { position: absolute; top: 20px; left: 20px; z-index: 10; padding: 8px 20px; border-radius: 999px; font-size: 20px; font-weight: 900; color: #fff; box-shadow: var(--shadow-md); }
+.ba-badge.before { background: #AC9F91; }
+.ba-badge.after { background: var(--brick); }
+.ba-desc { padding: 24px; text-align: center; font-size: 24px; font-weight: 800; color: var(--text-main); word-break: keep-all; line-height: 1.5; }
+.ceramic-benefits { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+.ceramic-benefits .c-badge { display: flex; align-items: flex-start; padding: 24px; background: #fff; border: 3px solid var(--line-strong); border-radius: 24px; font-size: 22px; font-weight: 600; color: var(--text-main); box-shadow: var(--shadow-sm); line-height: 1.5; word-break: keep-all; }
+.ceramic-benefits .c-badge .icon { font-size: 32px; margin-right: 16px; flex-shrink: 0; }
+.ceramic-benefits .c-badge strong { font-weight: 900; color: var(--brick); }
+
+/* 5. SYNERGY SET (3코어 요약) */
+.set-grid { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+.set-item { padding: 30px; border-radius: 32px; border: 3px solid var(--line); background: #fff; box-shadow: var(--shadow-sm); text-align: center; }
+.set-item .thumb { height: 320px; border-radius: 20px; border-style: solid; margin-bottom: 24px; }
+.set-item .name { font-size: 28px; line-height: 1.4; font-weight: 900; color: var(--text-main); word-break: keep-all; }
+
+/* 6. CHECK POINT (4포인트 스택) */
+.checkpoint-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+.checkpoint-card { text-align: left; padding: 36px 30px; border-radius: 32px; background: var(--bg-card); border: 3px solid var(--line); box-shadow: var(--shadow-sm); }
+.checkpoint-card .k { display:inline-block; font-size: 20px; font-weight: 900; color: var(--brick); background: var(--bg-cream); padding: 6px 18px; border-radius: 999px; margin-bottom: 16px; }
+.checkpoint-card .t { font-size: 32px; line-height: 1.35; font-weight: 900; color: var(--text-main); margin-bottom: 16px; word-break: keep-all; }
+.checkpoint-card .b { font-size: 22px; line-height: 1.6; font-weight: 600; color: var(--text-sub); word-break: keep-all;}
+
+/* 7. POINT DEEP DIVE */
+.point-hero { text-align: center; }
+.point-hero .visual { margin-top: 36px; height: 480px; border-style: solid; box-shadow: var(--shadow-md); border-radius: 32px; }
+
+/* 8. FAQ CHAT */
+.chat-wrap { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+.chat-row { display: flex; align-items: flex-start; gap: 16px; }
+.chat-row.right { flex-direction: row-reverse; }
+.chat-avatar { flex: 0 0 64px; width: 64px; height: 64px; border-radius: 50%; background: var(--butter); border: 3px solid var(--butter-deep); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 1000; color: var(--brown); box-shadow: var(--shadow-sm); }
+.chat-content { max-width: 80%; display: flex; flex-direction: column; gap: 8px; }
+.chat-row.right .chat-content { align-items: flex-end; }
+.chat-name { font-size: 20px; font-weight: 900; color: var(--text-light); }
+.chat-bubble { padding: 20px 24px; border-radius: 28px; background: #fff; border: 2px solid var(--line); color: var(--text-main); font-size: 22px; line-height: 1.6; font-weight: 600; box-shadow: var(--shadow-sm); word-break: keep-all; }
+.chat-row.right .chat-bubble { background: var(--bg-warm); border-color: var(--line-strong); }
+
+/* 9. INFORMATION TABLE */
+.hb-info-wrap { padding: 80px 40px; background: #fff; }
+.hb-info-head { display: flex; align-items: center; justify-content: center; min-height: 80px; border-radius: 24px; background: var(--butter-deep); color: var(--text-main); font-size: 32px; font-weight: 1000; letter-spacing: .05em; margin-bottom: 30px; box-shadow: var(--shadow-sm); }
+.hb-table { width: 100%; border-collapse: collapse; border-radius: 24px; overflow: hidden; border: 3px solid var(--line-strong); }
+.hb-table tr { display: block; border-bottom: 3px solid var(--line-strong); }
+.hb-table tr:last-child { border-bottom: none; }
+.hb-table th, .hb-table td { display: block; width: 100%; padding: 24px; font-size: 22px; line-height: 1.6; text-align: left; }
+.hb-table th { background: var(--bg-cream); font-weight: 900; color: var(--brown); }
+.hb-table td { background: #fff; font-weight: 600; color: var(--text-main); }
+.hb-table ol { margin-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+
+/* 10. FINALE CTA */
+.finale-mascot .badge { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fff; border: 3px solid var(--line-strong); box-shadow: var(--shadow-md); font-size: 50px; margin: 0 auto 30px; }
+.finale-btn { margin-top: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 84px; border-radius: 999px; background: var(--brick-soft); color: #fff; text-decoration: none; font-size: 32px; font-weight: 1000; letter-spacing: -0.02em; box-shadow: 0 16px 30px rgba(255, 143, 0, 0.25); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="hero">
+    <div class="sec-label">소형·노령견 맞춤 케어</div>
+    <h1>치즈처럼 귀엽게,<br/>식사는 더 편안하게</h1>
+    <p>
+      11.5cm 높은 밥그릇과 넓은 물그릇, 정리가 쉬운 옐로우 매트까지.<br/>
+      반려견의 관절건강과 위생, 집안 인테리어까지 고려한 세라믹 식기 세트
+    </p>
+    <div class="hero-shot media-shell">
+      [이미지 삽입부]<br/>전체 세트 연출 컷
+    </div>
+  </section>
+
+  <section class="section bg-warm" id="option-top">
+    <div class="center">
+      <div class="sec-label">SET OPTIONS</div>
+      <div class="sec-title">원하는 구성으로<br/>고르세요</div>
+    </div>
+    <div class="option-list">
+      <div class="option-card">
+        <div class="opt-thumb media-shell">
+          [이미지 삽입부]<br/>단품 썸네일
+        </div>
+        <div>
+          <div class="opt-badge">OPTION 01</div>
+          <div class="opt-title">높은 밥그릇 단품</div>
+          <div class="opt-price">
+            <span class="origin">17,800원</span>
+            <span class="final">12,800원</span>
+            <span class="percent">28%</span>
+          </div>
+        </div>
+      </div>
+      <div class="option-card">
+        <div class="opt-thumb media-shell">
+          [이미지 삽입부]<br/>풀세트 썸네일
+        </div>
+        <div>
+          <div class="opt-badge">OPTION 02</div>
+          <div class="opt-title">멜팅치즈 풀세트<span class="sub">(밥그릇 + 물그릇 + 패드)</span></div>
+          <div class="opt-price">
+            <span class="origin">34,800원</span>
+            <span class="final">24,800원</span>
+            <span class="percent">28%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ivory">
+    <div class="center">
+      <div class="intro-q">매일 먹는 밥과 물,<br/>노령 소형견에게<br/>진짜로 편안할까요?</div>
+      <div class="intro-desc">
+        너무 낮은 식기는 목 관절에 부담을 주어,<br/>켁켁거림이나 관절 문제를 유발할 수 있습니다.<br/><br/>
+        가볍고 좁은 물 그릇은 쉽게 엎지르고,<br/>사방에 물이 튀어 주변이 금방 지저분해지기 쉽죠.<br/><br/>
+        "흘려도 괜찮아요" 노란 매트가 주변 정리를 도와주어 매일 위생적인 식사 환경을 유지해 줍니다.
+      </div>
+      <div class="intro-bridge">
+        노령견의 건강, 위생, 보호자의 편의성 까지 한번에 챙겼어요.<br/>
+        이쁜데, 깨끗하고, 편한, 멜팅 치즈 식기세트
+      </div>
+      <div class="intro-box">
+        <div class="intro-box-kicker">단순히 귀여운 그릇이 아닙니다</div>
+        <div class="intro-box-title">높이, 넓이, 동선까지<br/>완벽하게 챙긴 세트</div>
+        <div class="intro-bubbles">
+          <div class="intro-bubble">목 관절을 보호하는 11.5cm 맞춤 높이</div>
+          <div class="intro-bubble">물 튈 걱정 없는 넉넉한 와이드 입구</div>
+          <div class="intro-bubble">청소가 1초면 끝나는 위생 매트</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ivory">
+    <div class="center">
+      <div class="sec-label">COLOR MATCH</div>
+      <div class="sec-title">치즈와 꼭 닮은<br/>기분 좋은 옐로우</div>
+      <div class="sec-desc">
+        치즈 색상의 세라믹 식기와 밝은 노란색 매트.<br/>
+        공간을 환하게 밝히는 따뜻한 톤온톤 배색입니다.
+      </div>
+    </div>
+    
+    <div class="media-shell" style="height: 480px; margin-top: 40px; border-radius: 32px; border-style: solid; box-shadow: var(--shadow-sm); padding: 0;">
+      <img src="uploaded:Gemini_Generated_Image_fw20axfw20axfw20 (1).png" alt="식기와 매트의 컬러 매치" style="object-fit: cover;" />
+    </div>
+
+    <div class="color-wrap">
+      <div class="color-card">
+        <div class="color-circle" style="background: #FFB300;"></div>
+        <div class="color-info">
+          <div class="color-name">멜팅 치즈</div>
+          <div class="color-mat">세라믹 식기 색상</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-circle" style="background: #FFE082;"></div>
+        <div class="color-info">
+          <div class="color-name">브라이트 옐로우</div>
+          <div class="color-mat">실리콘 매트 색상</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-soft">
+    <div class="center">
+      <div class="sec-label">SAFE MATERIAL</div>
+      <div class="sec-title">표면의 차이가<br/>위생의 차이입니다</div>
+      <div class="sec-desc">미세한 흠집 사이로 세균이 번식하는 일반 식기와 달리, 고온에서 구운 세라믹은 압도적으로 매끄럽고 청결합니다.</div>
+    </div>
+    
+    <div class="ba-wrap">
+      <div class="ba-card">
+        <div class="ba-badge before">플라스틱 / 스텐</div>
+        <div class="media-shell" style="height: 300px; border:none; border-radius:0;">
+          [이미지 삽입부]<br/>스크래치 표면 확대 컷
+        </div>
+        <div class="ba-desc">스크래치 틈으로 스며든 찌꺼기가<br/>냄새와 턱드름을 유발합니다.</div>
+      </div>
+      <div class="ba-card" style="border-color: var(--brick-soft);">
+        <div class="ba-badge after">멜팅치즈 세라믹</div>
+        <div class="media-shell" style="height: 300px; border:none; border-radius:0; background:#fff;">
+          [이미지 삽입부]<br/>매끄러운 세라믹 표면 컷
+        </div>
+        <div class="ba-desc" style="color: var(--brick);">고온 소성으로 표면을 완벽히 코팅해<br/>세균 번식을 원천 차단합니다.</div>
+      </div>
+    </div>
+    
+    <div class="ceramic-benefits">
+      <div class="c-badge">
+        <span class="icon">🔥</span>
+        <div>정제된 도토(陶土)를 800℃ 1차 소성 후, <strong>1300~1400℃의 고온에서 2차 소성</strong>한 최고급 세라믹입니다.</div>
+      </div>
+      <div class="c-badge">
+        <span class="icon">✨</span>
+        <div>미세 스크래치는 <strong>치약으로 가볍게 문질러</strong> 얼룩을 닦아내고 새것처럼 관리할 수 있습니다.</div>
+      </div>
+      <div class="c-badge">
+        <span class="icon">🧼</span>
+        <div>열탕 소독 및 식기세척기 사용이 가능하며, <strong>pH 11~11.5 사이의 세제 사용을 권장</strong>합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="center">
+      <div class="sec-label">완벽한 시너지</div>
+      <div class="sec-title">밥과 물을 나누면<br/>식사 자리가 차분해집니다</div>
+    </div>
+    <div class="set-grid">
+      <div class="set-item">
+        <div class="thumb media-shell">[이미지 삽입부]<br/>높은 밥그릇</div>
+        <div class="name">관절에 무리 없는<br/>높은 밥그릇</div>
+      </div>
+      <div class="set-item">
+        <div class="thumb media-shell">[이미지 삽입부]<br/>넓은 물그릇</div>
+        <div class="name">쏟을 걱정 없는<br/>넉넉한 물그릇</div>
+      </div>
+      <div class="set-item">
+        <div class="thumb media-shell">[이미지 삽입부]<br/>옐로우 매트</div>
+        <div class="name">청소가 쉬워지는<br/>위생적인 옐로우 매트</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ivory">
+    <div class="center">
+      <div class="sec-label">핵심 포인트</div>
+      <div class="sec-title">멜팅치즈 식기,<br/>무엇이 특별할까요?</div>
+    </div>
+    <div class="checkpoint-grid">
+      <div class="checkpoint-card">
+        <div class="k">POINT 1</div>
+        <div class="t">목 관절에 좋은<br/>11.5cm 맞춤 높이</div>
+        <div class="b">바닥에 바짝 엎드리지 않아 식도 막힘과 관절 부담을 크게 줄여줍니다.</div>
+      </div>
+      <div class="checkpoint-card">
+        <div class="k">POINT 2</div>
+        <div class="t">사각지대 없는<br/>둥근 곡면 구조</div>
+        <div class="b">안쪽을 완만한 호형 곡면으로 마감해 사료가 자연스럽게 가운데로 모입니다.</div>
+      </div>
+      <div class="checkpoint-card">
+        <div class="k">POINT 3</div>
+        <div class="t">밀리지 않는<br/>묵직한 세라믹 바디</div>
+        <div class="b">묵직한 무게와 넓은 하부 덕분에 열정적으로 먹어도 그릇이 도망가지 않습니다.</div>
+      </div>
+      <div class="checkpoint-card">
+        <div class="k">POINT 4</div>
+        <div class="t">쏟을 걱정 없는<br/>넓은 입구의 물그릇</div>
+        <div class="b">넉넉한 와이드 설계와 안정적인 디자인으로 물 튀김을 막아줍니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-soft">
+    <div class="point-hero center">
+      <div class="sec-label">편안한 식사 구조</div>
+      <div class="sec-title">목관절에 딱 좋은<br/>11.5cm 맞춤 높이</div>
+      <div class="sec-desc">
+        고개를 바닥까지 푹 숙이는 자세는 관절에 무리를 줍니다. 체형을 고려해 입구를 11.5cm 위로 올려, 켁켁거림 없이 편안하게 식사할 수 있도록 설계했습니다.<br>
+        바닥 그릇보다 입구가 위로 올라와 있다는 점이 핵심 포인트입니다.
+      </div>
+      <div class="visual media-shell">
+        <img src="uploaded:image_9c2a24.png" alt="강아지가 높은 밥그릇으로 편안하게 밥 먹는 모습" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="point-hero center">
+      <div class="sec-label">부드러운 식사 흐름</div>
+      <div class="sec-title">먹기힘든 사각지대 없는<br/>둥근 곡면 구조</div>
+      <div class="sec-desc">
+        사료가 한쪽에 오래 남지 않도록 설계된 둥근 곡면입니다.<br>
+        사료가 자연스럽게 가운데로 모여, 끝까지 편안하게 먹을 수 있습니다.<br>
+        먹는 자리까지 덜 흔들리게 설계되었습니다.
+      </div>
+      <div class="visual media-shell">
+        [이미지 삽입부]<br/>둥근 곡면 클로즈업
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-soft">
+    <div class="point-hero center">
+      <div class="sec-label">밀리지 않는 안정감</div>
+      <div class="sec-title">밀리지 않는 묵직한<br/>세라믹 바디로 편안한 식사</div>
+      <div class="sec-desc">
+        가벼운 플라스틱 식기는 아이들의 코끝에 쉽게 밀립니다.<br>
+        밀도 높은 세라믹 특유의 묵직함과 넓게 받쳐 주는 형태로 언제나 든든하게 자리를 지켜줍니다.
+      </div>
+      <div class="visual media-shell">
+        [이미지 삽입부]<br/>거친 하부 마감 디테일
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ivory">
+    <div class="point-hero center">
+      <div class="sec-label">넉넉한 여유</div>
+      <div class="sec-title">넓은 입구, 낮은 높이로<br/>쏟을 걱정 없는 물그릇</div>
+      <div class="sec-desc">
+        입구가 좁고 가벼우면 물을 엎지르기 쉽고 부담을 느낍니다.<br>
+        17cm 와이드 입구 설계와 안정적인 디자인으로 주변에 물이 튀는 것을 막고 자연스러운 수분 섭취를 돕습니다.<br>
+        놓아두기만 해도 기분 좋아지는 사랑스러운 디자인입니다.
+      </div>
+      <div class="visual media-shell">
+        [이미지 삽입부]<br/>와이드 물그릇 연출 컷
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="center">
+      <div class="sec-label">자주 묻는 질문</div>
+      <div class="sec-title">궁금해하시는 점들</div>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-row">
+        <div class="chat-avatar">Q</div>
+        <div class="chat-content">
+          <div class="chat-name">고객님</div>
+          <div class="chat-bubble">식기세척기나 전자레인지 사용이 가능한가요?</div>
+        </div>
+      </div>
+      <div class="chat-row right">
+        <div class="chat-avatar">A</div>
+        <div class="chat-content">
+          <div class="chat-name">멜팅치즈</div>
+          <div class="chat-bubble">네, 1300도 이상 고온에서 구워낸 도자기라 식기세척기, 열탕 소독 모두 가능합니다. 급격한 온도 변화만 주의해 주세요.</div>
+        </div>
+      </div>
+      <div class="chat-row">
+        <div class="chat-avatar">Q</div>
+        <div class="chat-content">
+          <div class="chat-name">고객님</div>
+          <div class="chat-bubble">그릇이 밀리지는 않을까요?</div>
+        </div>
+      </div>
+      <div class="chat-row right">
+        <div class="chat-avatar">A</div>
+        <div class="chat-content">
+          <div class="chat-name">멜팅치즈</div>
+          <div class="chat-bubble">밥그릇은 약 397g으로, 아이들이 코로 밀어도 끄떡없는 묵직함을 가졌습니다. 매트와 함께 쓰시면 더욱 튼튼합니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hb-info-wrap">
+    <div class="hb-info-head">상품 정보</div>
+    <table class="hb-table">
+      <tr><th>제품명</th><td>멜팅치즈 세라믹 식기 세트</td></tr>
+      <tr><th>세트 구성</th><td>노란 패드 + 높은 밥그릇 + 넓은 물그릇<br/>(높은 밥그릇 단품 구매 가능)</td></tr>
+      <tr><th>재질</th><td>도자기제 (세라믹)</td></tr>
+      <tr><th>높은 밥그릇</th><td>입구 12.5cm · 높이 11.5cm<br/>250mL · 397g</td></tr>
+      <tr><th>넓은 물그릇</th><td>입구 17cm · 높이 7.5cm<br/>470mL · 419g</td></tr>
+      <tr><th>제조 공정</th><td>800℃ 1차 / 1300~1400℃ 2차 소성</td></tr>
+      <tr>
+        <th>주의사항</th>
+        <td>
+          <ol>
+            <li>수작업 공정상 미세한 크기 오차가 있을 수 있습니다.</li>
+            <li>급랭/급가열 등 급격한 온도 변화는 파손의 원인이 됩니다.</li>
+          </ol>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="section bg-soft">
+    <div class="center">
+      <div class="finale-mascot"><div class="badge">🧀</div></div>
+      <div class="sec-title">편안한 식사 시간,<br/>망설일 필요 없습니다</div>
+      <div class="sec-desc">멜팅치즈 식기와 함께 매일의 일상을<br/>더 귀엽고 건강하게 바꿔보세요.</div>
+      <a href="#option-top" class="finale-btn">세트 구성 선택하러 가기 <span>›</span></a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

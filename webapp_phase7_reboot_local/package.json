@@ -1,0 +1,9 @@
+{
+  "name": "detail-page-webapp-phase6-local",
+  "private": true,
+  "version": "0.6.0",
+  "scripts": {
+    "build:local": "python3 scripts/build_local_bundle.py",
+    "validate": "python3 scripts/validate_phase6.py"
+  }
+}

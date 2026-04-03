@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가벼운 마실형 D링 올인원</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --page-width: 860px;
+    --bg-ivory: #FDFBF7;
+    --bg-warm: #F5F3ED;
+    --bg-soft: #EEF5FA;
+    --bg-cream: #FBF3D9;
+    --bg-gray: #F2F2F2;
+    --bg-navy: #1A2B56;
+
+    --text-main: #4A3320;
+    --text-sub: #7A6959;
+    --text-light: #B5A89A;
+
+    --line: #E8E2D9;
+    --line-strong: #D6CDBF;
+
+    --point-green: #7A9A5E;
+    --point-yellow: #E8B953;
+    --point-red: #C0392B;
+    --point-blue: #5C9AD4;
+
+    --shadow-sm: 0 4px 12px rgba(74, 51, 32, 0.04);
+    --shadow-md: 0 10px 24px rgba(74, 51, 32, 0.06);
+    --shadow-lg: 0 16px 40px rgba(74, 51, 32, 0.08);
+
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #d5d5d5;
+    display: flex;
+    justify-content: center;
+    font-family: 'Pretendard', sans-serif;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    line-height: 1.6;
+    padding: 60px 0;
+  }
+  .page {
+    width: var(--page-width);
+    background: var(--bg-ivory);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  .section { padding: 100px 50px; position: relative; }
+  .bg-white { background: #fff; }
+  .bg-warm { background: var(--bg-warm); }
+  .bg-soft { background: var(--bg-soft); }
+  .bg-cream { background: var(--bg-cream); }
+
+  .sec-label {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 6px 18px; border-radius: 30px;
+    font-size: 14px; font-weight: 800;
+    background: #fff; border: 1px solid var(--line-strong); color: var(--text-sub);
+    margin-bottom: 24px;
+  }
+  .sec-title {
+    font-size: 40px; line-height: 1.35; font-weight: 900;
+    letter-spacing: -0.04em; color: var(--text-main); margin-bottom: 16px;
+  }
+  .sec-desc {
+    font-size: 18px; line-height: 1.6; font-weight: 500;
+    color: var(--text-sub); word-break: keep-all;
+  }
+  .center { text-align: center; }
+
+  .ph {
+    background: #EFECE7;
+    border: 1px dashed #CFC5B6;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; color: var(--text-sub);
+    font-size: 15px; font-weight: 700; padding: 20px; line-height: 1.5;
+  }
+
+  .editorial-hero { text-align: center; }
+  .editorial-hero .badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 24px 0; }
+  .editorial-hero .badge { padding: 8px 16px; border-radius: 14px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 800; color: var(--text-main); }
+  .hero-visual { height: 500px; margin-top: 24px; border-radius: var(--radius-xl); }
+
+  .bubble-wrap { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+  .bubble {
+    max-width: 560px; background: #fff; border: 1px solid var(--line-strong);
+    border-radius: 18px; padding: 18px 24px; box-shadow: var(--shadow-sm);
+    font-weight: 800; color: var(--text-main); font-size: 18px; line-height: 1.5;
+  }
+  .bubble.left { align-self: flex-start; border-bottom-left-radius: 4px; }
+  .bubble.right { align-self: flex-end; border-bottom-right-radius: 4px; }
+
+  .checkpoint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 40px; }
+  .checkpoint-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 32px 24px; text-align: center; box-shadow: var(--shadow-sm); }
+  .checkpoint-card .t { font-size: 26px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; color: var(--text-main); }
+  .checkpoint-card .b { font-size: 17px; line-height: 1.6; color: var(--text-sub); font-weight: 600; }
+
+  .point-hero { border-radius: var(--radius-xl); background: #fff; padding: 60px 40px; box-shadow: var(--shadow-md); margin-top: 40px; }
+  .point-hero .visual { height: 420px; margin-top: 30px; border-radius: var(--radius-lg); }
+
+  .collage-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; margin-top: 40px; }
+  .collage-col { display: flex; flex-direction: column; gap: 20px; }
+  .collage-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .c-box.xl { height: 460px; }
+  .c-box.lg { height: 280px; }
+  .c-box.md { height: 200px; }
+
+  .warn-center { text-align: center; margin-bottom: 40px; }
+  .warn-icon { width: 70px; height: 70px; border-radius: 50%; background: var(--point-red); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; }
+  .warn-text { margin-top: 18px; font-size: 24px; font-weight: 900; color: var(--point-red); letter-spacing: 2px; }
+  .q-chip { margin: 0 auto 25px; width: max-content; background: #fff; border: 2px solid var(--point-red); border-radius: 30px; padding: 15px 30px; font-size: 22px; font-weight: 900; color: var(--text-main); box-shadow: var(--shadow-sm); }
+  .warn-card { margin-top: 20px; border: 1px solid var(--line); background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; }
+  .warn-card .img { width: 320px; height: auto; border-radius: 0; border-right: 1px solid var(--line); }
+  .warn-card .txt { padding: 34px; display: flex; flex-direction: column; justify-content: center; flex: 1; }
+  .warn-card .num { color: var(--text-light); font-size: 18px; font-weight: 900; margin-bottom: 10px; }
+  .warn-card p { margin: 0; font-size: 20px; line-height: 1.6; font-weight: 800; color: var(--text-main); }
+
+  .step-wrap { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm); background: #fff; }
+  .step-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+  .step-row:first-child { border-top: none; }
+  .step-row .img { height: 300px; border-radius: 0; border-right: 1px solid var(--line); }
+  .step-row .txt { padding: 0 40px; display: flex; flex-direction: column; justify-content: center; }
+  .step-row .num { color: var(--point-yellow); font-size: 18px; font-weight: 900; margin-bottom: 12px; letter-spacing: 1px; }
+  .step-row .body { font-size: 22px; font-weight: 800; color: var(--text-main); line-height: 1.5; }
+
+  .faq { background: var(--point-yellow); padding: 80px 50px; border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+  .faq h3 { margin: 0 0 10px; text-align: center; font-size: 42px; font-weight: 900; color: var(--text-main); }
+  .faq .sub { text-align: center; color: var(--text-main); font-size: 18px; font-weight: 600; margin-bottom: 50px; }
+  .qa-row { display: flex; gap: 15px; align-items: flex-start; margin-top: 25px; }
+  .qa-row.r { justify-content: flex-end; }
+  .qa-av { width: 50px; height: 50px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--text-main); font-size: 20px; font-weight: 900; box-shadow: var(--shadow-sm); flex-shrink: 0; }
+  .qa-bubble { max-width: 600px; background: #fff; border-radius: 24px; padding: 20px 30px; font-size: 18px; line-height: 1.6; font-weight: 700; color: var(--text-main); box-shadow: var(--shadow-sm); }
+  .qa-row.r .qa-bubble { background: var(--text-main); color: #fff; }
+
+  .guide-card { margin-top: 30px; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 30px; box-shadow: var(--shadow-sm); }
+  .guide-card h4 { margin: 0 0 14px; font-size: 26px; font-weight: 900; }
+  .guide-card p { margin: 0; color: var(--text-sub); font-size: 18px; line-height: 1.7; font-weight: 600; }
+
+  .wash { padding: 70px 50px; background: var(--bg-ivory); border-bottom: 1px solid var(--line); }
+  .wash h3 { margin: 0 0 24px; font-size: 32px; font-weight: 900; }
+  .wash ul { margin: 0; padding-left: 20px; color: var(--text-sub); line-height: 1.8; font-size: 16px; font-weight: 600; }
+
+  .info { background: #fff; padding: 80px 50px; border-radius: 0 0 var(--radius-xl) var(--radius-xl); border: 1px solid var(--line); border-top: none; }
+  .info h3 { margin: 0 0 30px; color: var(--text-main); font-size: 32px; font-weight: 900; }
+  .info-table { width: 100%; border-collapse: collapse; border-top: 2px solid var(--text-main); }
+  .info-table td { padding: 20px 10px; font-size: 16px; line-height: 1.6; border-bottom: 1px solid var(--line); }
+  .info-table td:first-child { width: 160px; color: var(--text-main); font-weight: 800; }
+  .info-table td:last-child { color: var(--text-sub); font-weight: 600; }
+
+  .cta-banner { background: var(--bg-navy); border-radius: var(--radius-xl); padding: 50px; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-lg); }
+  .cta-banner .tit { color: #fff; font-size: 50px; line-height: 1.2; letter-spacing: -0.03em; font-weight: 900; margin-bottom: 15px; }
+  .cta-banner .sub { color: rgba(255,255,255,.8); font-size: 18px; font-weight: 500; margin-bottom: 30px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--point-yellow); color: var(--text-main); border-radius: 30px; padding: 16px 32px; font-size: 20px; font-weight: 900; text-decoration: none; }
+  .cta-char { width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-weight: 900; border: 1px dashed rgba(255,255,255,0.3); color: #fff; font-size: 15px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <section class="section bg-white">
+    <div class="editorial-hero">
+      <div class="sec-label">가벼운 마실형</div>
+      <div class="sec-title">가볍게 입히고<br>바로 나가는 올인원</div>
+      <div class="sec-desc">짧고 잦은 산책이 많은 노령견에게, 덧입힘 부담을 줄인 가벼운 외출복.</div>
+      <div class="badges">
+        <div class="badge">똑딱 앞단추</div>
+        <div class="badge">일체형 D링</div>
+        <div class="badge">뒷다리 밴딩</div>
+        <div class="badge">실내-마실 루틴</div>
+      </div>
+      <div class="ph hero-visual">[이미지] 정면 또는 45도 정면 풀착용컷<br>(D링과 전체 핏이 함께 보이는 밝은 야외 산책 컷)</div>
+    </div>
+  </section>
+
+  <section class="section bg-warm">
+    <div class="center">
+      <div class="sec-label">산책 준비</div>
+      <div class="sec-title">짧게 나갈 때마다<br>또 챙기기 번거롭죠</div>
+      <div class="sec-desc">노령견 산책은 자주 짧게. 그래서 준비도 무리 없이 끝나야 합니다.</div>
+    </div>
+    <div class="bubble-wrap">
+      <div class="bubble left">“집 앞 한 바퀴인데 하네스까지 다시 챙기려니 손이 두 번 가요.”</div>
+      <div class="bubble right">“여러 겹 입히는 날보다, 가볍게 입고 바로 나가는 날이 루틴이 더 편해져요.”</div>
+    </div>
+  </section>
+
+  <section class="section bg-soft">
+    <div class="center">
+      <div class="sec-label">CHECK POINT</div>
+      <div class="sec-title">가볍게 나가기 좋은<br>네 가지 이유</div>
+    </div>
+    <div class="checkpoint-grid">
+      <div class="checkpoint-card">
+        <div class="t">앞단추 오픈</div>
+        <div class="b">입히는 시간을 짧게</div>
+      </div>
+      <div class="checkpoint-card">
+        <div class="t">일체형 D링</div>
+        <div class="b">연결하면 바로 출발</div>
+      </div>
+      <div class="checkpoint-card">
+        <div class="t">뒷다리 밴딩</div>
+        <div class="b">말림과 들뜸 완화</div>
+      </div>
+      <div class="checkpoint-card">
+        <div class="t">가벼운 원단감</div>
+        <div class="b">실내부터 집 앞까지</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="point-hero center">
+      <div class="sec-label">POINT 1</div>
+      <div class="sec-title">입히기 편한 앞단추</div>
+      <div class="sec-desc">앞가슴 단추 구조라 여닫는 과정이 간단해, 산책 전 손이 덜 갑니다.</div>
+      <div class="ph visual">[이미지/영상] 앞가슴 단추를 가볍게 열고 닫는 손 클로즈업 컷</div>
+    </div>
+  </section>
+
+  <section class="section bg-warm">
+    <div class="point-hero center" style="box-shadow: none; border: 1px solid var(--line);">
+      <div class="sec-label">POINT 2</div>
+      <div class="sec-title">덧입힘 없는 출발</div>
+      <div class="sec-desc">짧고 차분한 산책은 리드줄만 연결해, 하네스를 한 번 더 덧입히는 번거로움을 줄일 수 있어요.</div>
+      <div class="ph visual">[이미지] 등판 D링에 리드줄을 연결하는 근접 컷 + 출발 직전 강아지의 뒷모습</div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="point-hero center">
+      <div class="sec-label">POINT 3</div>
+      <div class="sec-title">들뜸을 덜어주는 밴딩</div>
+      <div class="sec-desc">뒷다리 밴딩 디테일이 걷는 동안 옷이 말리거나 붕 뜨는 느낌을 줄여줍니다.</div>
+      <div class="ph visual">[이미지] 걷는 옆모습 (후면 3/4 컷) 및 뒷다리 밴딩 부분 클로즈업</div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="sec-label">DETAILS</div>
+    <div class="sec-title">디테일이 살아야<br>매일 손이 갑니다</div>
+    <div class="sec-desc">보기 좋은 것에서 끝나지 않고, 자주 입히는 루틴까지 생각한 포인트들입니다.</div>
+    <div class="collage-grid">
+      <div class="collage-col">
+        <div class="ph c-box xl">[이미지] 등 위 D링이 바로 보이는 후면 구조 (메인)</div>
+        <div class="collage-row">
+          <div class="ph c-box md">[이미지] 기린 캐릭터 포인트</div>
+          <div class="ph c-box md">[이미지] 하의 마감과 꼬리 오픈</div>
+        </div>
+      </div>
+      <div class="collage-col">
+        <div class="ph c-box lg">[이미지] 뒷다리 밴딩 착용핏</div>
+        <div class="ph c-box md">[이미지] 앞가슴 단추 오픈 디테일</div>
+        <div class="ph c-box md">[이미지] 가벼운 골지 원단 결</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="warn-center">
+      <div class="warn-icon">!</div>
+      <div class="warn-text">CHECK POINT</div>
+    </div>
+    <div class="q-chip">이런 산책에는 맞지 않아요</div>
+
+    <div class="warn-card">
+      <div class="ph img">[이미지] 줄을 강하게 당기며 앞서나가는 견인 산책 연출컷 (흑백/톤다운)</div>
+      <div class="txt">
+        <div class="num">Check 01</div>
+        <p>갑자기 튀어나가거나 줄을 강하게 당기는 아이에게는 이 제품만으로 산책하는 것을 권하지 않습니다.</p>
+      </div>
+    </div>
+    <div class="warn-card">
+      <div class="ph img">[이미지] 사람이 많은 복잡한 거리나 장시간 외출하는 연출컷 (흑백/톤다운)</div>
+      <div class="txt">
+        <div class="num">Check 02</div>
+        <p>사람 많은 길, 장시간 외출, 통제가 중요한 산책이라면 전용 하네스형 제품이 더 잘 맞을 수 있어요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-soft">
+    <div class="sec-label">HOW TO WEAR</div>
+    <div class="sec-title">준비를 줄이고<br>바로 집 앞으로</div>
+
+    <div class="step-wrap">
+      <div class="step-row">
+        <div class="ph img">[이미지] 앞단추를 열고 강아지에게 입히는 첫 단계 컷</div>
+        <div class="txt">
+          <div class="num">STEP 01</div>
+          <div class="body">앞단추를 열고 아이의 앞가슴과 다리 위치를 편하게 맞춰주세요.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="ph img">[이미지] 앞가슴 똑딱 단추를 잠그는 손 클로즈업</div>
+        <div class="txt">
+          <div class="num">STEP 02</div>
+          <div class="body">앞가슴 단추를 순서대로 잠가 몸에 무리 없이 핏을 맞춰주세요.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="ph img">[이미지] 등판 D링에 리드줄을 찰칵 연결하는 컷</div>
+        <div class="txt">
+          <div class="num">STEP 03</div>
+          <div class="body">등 위 D링에 리드줄을 연결하면 가벼운 산책 준비가 끝납니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" style="padding-bottom: 0;">
+    <div class="faq">
+      <h3>QUESTIONS</h3>
+      <div class="sub">구매 전에 많이 묻는 내용만 먼저 정리했어요.</div>
+
+      <div class="qa-row">
+        <div class="qa-av">Q</div>
+        <div class="qa-bubble">이 제품만으로 산책해도 되나요?</div>
+      </div>
+      <div class="qa-row r">
+        <div class="qa-av">A</div>
+        <div class="qa-bubble">짧고 차분한 집 앞 산책이라면 일체형 D링을 바로 연결해 사용할 수 있습니다. 다만 갑자기 튀거나 강하게 당기는 아이에게는 전용 하네스형 제품을 권합니다.</div>
+      </div>
+
+      <div class="qa-row">
+        <div class="qa-av">Q</div>
+        <div class="qa-bubble">노령견에게 왜 잘 맞나요?</div>
+      </div>
+      <div class="qa-row r">
+        <div class="qa-av">A</div>
+        <div class="qa-bubble">짧게 자주 나가는 루틴에서 입히는 과정과 준비 단계를 줄여주기 때문입니다. 산책 전 스트레스를 덜고 싶은 아이에게 잘 어울립니다.</div>
+      </div>
+
+      <div class="qa-row">
+        <div class="qa-av">Q</div>
+        <div class="qa-bubble">실내에서도 입혀둘 수 있나요?</div>
+      </div>
+      <div class="qa-row r">
+        <div class="qa-av">A</div>
+        <div class="qa-bubble">두껍게 방한하는 타입보다는 가벼운 마실형에 가깝습니다. 실내 적응 후 집 앞 산책으로 이어지는 루틴에 활용해 주세요.</div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h4>GUIDE</h4>
+      <p>가슴둘레와 등길이를 먼저 확인해 주세요. 털이 많은 아이는 여유 핏을 함께 체크하면 더 편안합니다.</p>
+    </div>
+
+    <div class="wash">
+      <h3>CAUTION</h3>
+      <ul>
+        <li>심한 당김이나 도약이 많은 산책용으로는 권장하지 않습니다.</li>
+        <li>외출 전 D링과 단추가 제대로 잠겼는지 한 번 더 확인해 주세요.</li>
+        <li>사이즈가 크면 걷는 동안 말림이나 들뜸이 생길 수 있습니다.</li>
+        <li>장시간 외출이나 훈련용은 전용 하네스형 제품이 더 적합할 수 있습니다.</li>
+      </ul>
+    </div>
+
+    <div class="info">
+      <h3>INFORMATION</h3>
+      <table class="info-table">
+        <tr><td>제품명</td><td>가벼운 마실형 D링 올인원</td></tr>
+        <tr><td>활용 상황</td><td>실내 적응 후 집 앞 짧은 산책</td></tr>
+        <tr><td>핵심 디테일</td><td>앞단추 오픈 · 일체형 D링 · 뒷다리 밴딩</td></tr>
+        <tr><td>권장 대상</td><td>짧게 자주 걷는 소형 노령견</td></tr>
+        <tr><td>비권장 대상</td><td>갑자기 튀거나 줄을 심하게 당기는 강아지</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="section bg-white" style="padding-top: 40px; padding-bottom: 120px;">
+    <div class="cta-banner">
+      <div>
+        <div class="tit">가벼운 마실형<br>D링 올인원</div>
+        <div class="sub">똑딱 단추로 입히고, 리드줄만 연결해 바로 나가는 데일리 산책복.</div>
+        <a href="#" class="cta-btn">제품 보러가기 <span>›</span></a>
+      </div>
+      <div class="cta-char">[이미지]<br>가장 귀엽고 밝은<br>전신 컷 1장 누끼</div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
